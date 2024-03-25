@@ -17,6 +17,7 @@ public static class AppServiceRegistration
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddScoped<IRegionRepository, SQLRegionRepository>();
         services.AddScoped<IWalkRepository, SQLWalkRepository>();
+        services.AddScoped<ITokenRepository, TokenRepository>();
         return services;
     }
 }
