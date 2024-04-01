@@ -19,6 +19,7 @@ public static class AppServiceRegistration
         services.AddScoped<IWalkRepository, SQLWalkRepository>();
         services.AddScoped<IWalkDifficultyRepository, WalkDifficultyRepository>();
         services.AddScoped<ITokenRepository, TokenRepository>();
+        services.AddScoped<IImageRepository, LocalImageRepository>();
 
         services.AddSingleton<IUserRepository, StaticUserRepository>();
 

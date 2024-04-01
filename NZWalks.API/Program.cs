@@ -8,9 +8,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using NZWalks.API.Middlewares;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 
 var logger = new LoggerConfiguration()
@@ -107,6 +108,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"Images")),
+    RequestPath = "/Images"
+});
 
 app.MapControllers();
 
